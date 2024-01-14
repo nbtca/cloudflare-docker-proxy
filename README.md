@@ -11,27 +11,19 @@
 2. modify the link of the above button to your fork url
 3. click the button, you will be redirected to the deploy page
 
-## Config tutorial
+## Use
 
-1. use cloudflare worker host: only support proxy one registry
+We provide proxy for docker hub and github container registry.
+
    ```javascript
    const routes = {
-     "${workername}.${username}.workers.dev/": "https://registry-1.docker.io",
-   };
-   ```
-2. use custom domain: support proxy multiple registries route by host
-   - host your domain DNS on cloudflare
-   - add `A` record of xxx.example.com to `192.0.2.1`
-   - deploy this project to cloudflare workers
-   - add `xxx.example.com/*` to HTTP routes of workers
-   - add more records and modify the config as you need
-   ```javascript
-   const routes = {
-     "docker.libcuda.so": "https://registry-1.docker.io",
-     "quay.libcuda.so": "https://quay.io",
-     "gcr.libcuda.so": "https://k8s.gcr.io",
-     "k8s-gcr.libcuda.so": "https://k8s.gcr.io",
-     "ghcr.libcuda.so": "https://ghcr.io",
+     "docker.mirror.nbtca.space": "https://registry-1.docker.io",
+     "ghcr.mirror.nbtca.space": "https://ghcr.io",
    };
    ```
 
+You can pull a image from docker hub like this:
+
+   ```bash
+   docker pull docker.mirror.nbtca.space/library/alpine:latest
+   ```

@@ -77,7 +77,7 @@ async function handleRequest(request) {
     const wwwAuthenticate = parseAuthenticate(authenticateStr);
     return await fetchToken(wwwAuthenticate, url.searchParams);
   }
-  // foward requests
+  // forward requests
   const newUrl = new URL(upstream + url.pathname);
   const newReq = new Request(newUrl, {
     method: request.method,
